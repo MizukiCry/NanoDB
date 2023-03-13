@@ -50,7 +50,7 @@ uint32_t MurmurHash3_32(const uint8_t* source, const size_t bytes,
 
 uint32_t MurmurHash3_32(const std::string& str,
                         const uint32_t seed = 0x0d000721) {
-  return MurmurHash3_32(reinterpret_cast<const uint8_t*>(str.c_str()),
+  return MurmurHash3_32(reinterpret_cast<const uint8_t*>(str.data()),
                         str.length(), seed);
 }
 
@@ -74,8 +74,7 @@ class EqualTrait {
 template <>
 class HashTrait<std::string> {
   uint64_t operator()(const std::string& x) const {
-    return MurmurHash3_32(reinterpret_cast<const uint8_t*>(x.c_str()),
-                          x.length());
+    return MurmurHash3_32(x);
   }
 };
 

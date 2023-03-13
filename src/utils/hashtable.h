@@ -120,14 +120,14 @@ class HashTable {
     }
   }
 
-  HashTable& operator=(const HashTable& rhs) = delete;
+  HashTable& operator=(const HashTable& x) = delete;
 
-  HashTable& operator=(HashTable&& rhs) {
-    std::swap(size_, rhs.size_);
-    std::swap(count_, rhs.count_);
-    std::swap(auto_expand_, rhs.auto_expand_);
-    std::swap(auto_shrink_, rhs.auto_shrink_);
-    std::swap(head_, rhs.head_);
+  HashTable& operator=(HashTable&& x) {
+    std::swap(size_, x.size_);
+    std::swap(count_, x.count_);
+    std::swap(auto_expand_, x.auto_expand_);
+    std::swap(auto_shrink_, x.auto_shrink_);
+    std::swap(head_, x.head_);
     return *this;
   }
 
